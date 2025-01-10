@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./.assets/imgs/kylog-logo.png" alt="logo">
+    <img src="./.assets/imgs/kylog-logo.png" alt="logo" width=600 heigth=149>
 </div>
 
 </br>
