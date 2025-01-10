@@ -2,4 +2,11 @@
     <img src="./.assets/imgs/kylog-logo.png" alt="logo">
 </div>
 
-Simple and lightweight keylogger made with Python.
+</br>
+
+<div align="center">
+    <h4>Simple and lightweight keylogger made with Python</h4>
+</div>
+
+> [!WARNING]
+> This application is not functional yet.
